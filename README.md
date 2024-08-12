@@ -12,7 +12,7 @@ To accurately predict loan approvals without falsely approving too many loans th
 
 ## Deliverable[TODO]: 
 A web app that end users can utilize to predict loan approvals using a Random Forest model on the backend. 
-
+  app: https://loan-approval-prediction-model-hqvyhzsseqvlbxaza6rdhl.streamlit.app/
     
   <img src="WebAppPic.jpg" width="430" height="400">
 
