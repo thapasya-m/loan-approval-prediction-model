@@ -1,42 +1,44 @@
 import pandas as pd
-# import sklearn as sk
-# from sklearn.model_selection import train_test_split
-# from sklearn.ensemble import RandomForestClassifier 
+import sklearn as sk
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier 
 import streamlit as st
 # from IPython import get_ipython
 import pickle
 
-# train = train.dropna()
+train = pd.read_csv('train.csv')
+data = train.dropna()
 
-# data['TotalApplicantIncome'] = data['ApplicantIncome'] + data['CoapplicantIncome']
+data['TotalApplicantIncome'] = data['ApplicantIncome'] + data['CoapplicantIncome']
 
-# data = pd.get_dummies(data, columns = ['Gender'], drop_first = True)
+data = pd.get_dummies(data, columns = ['Gender'], drop_first = True)
 
-# data = pd.get_dummies(data, columns = ['Married'], drop_first = True)
+data = pd.get_dummies(data, columns = ['Married'], drop_first = True)
 
-# data = pd.get_dummies(data, columns = ['Loan_Status'], drop_first = True)
-# data = data.rename(columns = {'Loan_Status_Y' : 'Loan_Approved'})
+data = pd.get_dummies(data, columns = ['Loan_Status'], drop_first = True)
+data = data.rename(columns = {'Loan_Status_Y' : 'Loan_Approved'})
 
-# train.astype({'Credit_History' : int})
+data.astype({'Credit_History' : int})
 
-# #independent variables
-# features = ['Gender_Male', 'Married_Yes', 'TotalApplicantIncome', 'LoanAmount', 'Credit_History']
-# X = data[features]
-# #dependent variables
-# dependent = 'Loan_Approved'
-# y = data[dependent]
+#independent variables
+features = ['Gender_Male', 'Married_Yes', 'TotalApplicantIncome', 'LoanAmount', 'Credit_History']
+X = data[features]
+
+#dependent variables
+dependent = 'Loan_Approved'
+y = data[dependent]
 # X.shape, y.shape
 
-# #split dataset into train (80%) and test (20%), shuffle observations
-# x_train, x_test, y_train, y_test = train_test_split(X,y, test_size = 0.2, random_state = 10, shuffle = True)
+#split dataset into train (80%) and test (20%), shuffle observations
+x_train, x_test, y_train, y_test = train_test_split(X,y, test_size = 0.2, random_state = 10, shuffle = True)
 
-# #build random forest model, limit max depth to avoid overfitting
-# forest = RandomForestClassifier(max_depth=4, random_state = 10, n_estimators = 100, min_samples_leaf=5) 
-# model = forest.fit(x_train, y_train)
+#build random forest model, limit max depth to avoid overfitting
+forest = RandomForestClassifier(max_depth=4, random_state = 10, n_estimators = 100, min_samples_leaf=5) 
+model = forest.fit(x_train, y_train)
 
-# Load the model
-with open('Loan_Approval_Prediction.pkl', 'rb') as file:
-    model = pickle.load(file)
+# # Load the model
+# with open('Loan_Approval_Prediction.pkl', 'rb') as file:
+#     model = pickle.load(file)
 
 @st.cache_data()
 
