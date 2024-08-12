@@ -10,10 +10,9 @@ To create a model that accurately predicts loan approval and automates the manua
 ## Goal: 
 To accurately predict loan approvals without falsely approving too many loans that should be denied (minimize False Positives). 
 
-## Deliverable: 
+## Deliverable[TODO]: 
 A web app that end users can utilize to predict loan approvals using a Random Forest model on the backend. 
 
-    1. Web App: https://jessramos2-loan-approval-random-forest-web-streamlit-app-47jl27.streamlitapp.com/
     
   <img src="WebAppPic.jpg" width="430" height="400">
 
